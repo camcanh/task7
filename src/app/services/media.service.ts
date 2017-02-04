@@ -6,16 +6,19 @@ import 'rxjs/add/operator/map';
 export class MediaService {
 
   private url: string = 'http://media.mw.metropolia.fi/wbma';
+  private limit: number = 10;
 
   constructor(private http: Http) {
   }
 
   getMedia = () => {
-    return this.http.get(this.url + '/media')
+    return this.http.get(this.url + '/media?limit=' + this.limit)
       .map(
         res =>
           res.json()
       );
   }
+
+
 
 }
